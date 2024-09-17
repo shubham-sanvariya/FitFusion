@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.CN.FitFusion.dto.UserDto;
+import com.CN.FitFusion.exception.UserNotFoundException;
 import com.CN.FitFusion.model.Role;
 import com.CN.FitFusion.model.User;
 import com.CN.FitFusion.repository.UserRepository;
@@ -56,5 +57,10 @@ public class UserService {
 
     public List<User> getAllUsers(){
         return userRepository.findAll();
+    }
+
+    public User getUserById(Long id){
+        return userRepository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException("user not found"));
     }
 }
