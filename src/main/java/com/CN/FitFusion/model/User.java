@@ -56,5 +56,5 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonManagedReference
-    private List< Diet > diets;
+    private List< Diet > diets = new ArrayList<>();
 }
