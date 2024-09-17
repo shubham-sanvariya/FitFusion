@@ -60,7 +60,7 @@ public class User implements UserDetails{
     @JsonManagedReference
     private List< Exercise > exerciseList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List< Diet > diets = new ArrayList<>();
 
