@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,8 +29,11 @@ public class Exercise {
     private String description;
 
     private int sets;
-    
+
     private int reps;
 
-    // User user (ManyToOne)
+    @ManyToOne
+    // @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private User user;
 }
