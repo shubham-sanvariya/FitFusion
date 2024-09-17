@@ -1,6 +1,7 @@
 package com.CN.FitFusion.model;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -45,7 +49,9 @@ public class User {
      inverseJoinColumns = @JoinColumn(name = "role", referencedColumnName = "id"))
     private Set< Role > roles = new HashSet<>();
 
-    // List< Exercise > exerciseList (OneToMany)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List< Exercise > exerciseList;
 
     // List< Diet > diets (OneToMany)
 }
