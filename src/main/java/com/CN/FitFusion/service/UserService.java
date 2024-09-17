@@ -63,4 +63,16 @@ public class UserService {
         return userRepository.findById(id)
             .orElseThrow(() -> new UserNotFoundException("user not found"));
     }
+
+    public void updateUser(UserDto userDto, Long id){
+        User user = getUserById(id);
+        
+        user.setEmail(userDto.getEmail());
+        user.setPassword(new BCryptPasswordEncoder().encode(userDto.getPassword()));
+        user.setAge(userDto.getAge());
+        user.setGender(userDto.getGender());
+        user.setContactNo(userDto.getContactNo());
+        
+        userRepository.save(user);
+    }
 }
