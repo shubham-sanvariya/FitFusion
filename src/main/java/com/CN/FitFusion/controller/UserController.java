@@ -1,4 +1,4 @@
-package com.CN.FitFusion.service;
+package com.CN.FitFusion.controller;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.CN.FitFusion.dto.UserDto;
 import com.CN.FitFusion.model.User;
+import com.CN.FitFusion.service.UserService;
 
 @RestController
 @RequestMapping("/user")
