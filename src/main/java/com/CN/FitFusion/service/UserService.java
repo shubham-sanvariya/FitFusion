@@ -66,7 +66,7 @@ public class UserService {
 
     public void updateUser(UserDto userDto, Long id){
         User user = getUserById(id);
-        
+
         user.setEmail(userDto.getEmail());
         user.setPassword(new BCryptPasswordEncoder().encode(userDto.getPassword()));
         user.setAge(userDto.getAge());
@@ -74,5 +74,9 @@ public class UserService {
         user.setContactNo(userDto.getContactNo());
         
         userRepository.save(user);
+    }
+
+    public void deleteUserById(Long id){
+        userRepository.deleteById(id);
     }
 }
