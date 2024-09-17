@@ -54,5 +54,7 @@ public class User {
     @JsonManagedReference
     private List< Exercise > exerciseList = new ArrayList<>();
 
-    // List< Diet > diets (OneToMany)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private List< Diet > diets;
 }
