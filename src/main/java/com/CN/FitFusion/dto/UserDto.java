@@ -21,5 +21,5 @@ public class UserDto {
 
     private Long contactNo;
 
-    private String userType;
+    private String userType; // ("ADMIN", "CUSTOMER", "TRAINER")
 }
