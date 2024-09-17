@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.CN.FitFusion.dto.UserDto;
 import com.CN.FitFusion.exception.UserNotFoundException;
+import com.CN.FitFusion.model.Diet;
 import com.CN.FitFusion.model.Exercise;
 import com.CN.FitFusion.model.Role;
 import com.CN.FitFusion.model.User;
@@ -83,7 +84,13 @@ public class UserService {
 
     public List<Exercise> getExercisesById(Long id){
         User user = getUserById(id);
-        
+
         return user.getExerciseList();
+    }
+
+    public List<Diet> getDietsById(Long id){
+        User user = getUserById(id);
+
+        return user.getDiets();
     }
 }
