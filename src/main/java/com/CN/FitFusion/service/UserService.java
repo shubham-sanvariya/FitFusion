@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.CN.FitFusion.dto.UserDto;
 import com.CN.FitFusion.exception.UserNotFoundException;
+import com.CN.FitFusion.model.Exercise;
 import com.CN.FitFusion.model.Role;
 import com.CN.FitFusion.model.User;
 import com.CN.FitFusion.repository.UserRepository;
@@ -78,5 +79,11 @@ public class UserService {
 
     public void deleteUserById(Long id){
         userRepository.deleteById(id);
+    }
+
+    public List<Exercise> getExercisesById(Long id){
+        User user = getUserById(id);
+        
+        return user.getExerciseList();
     }
 }
