@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -43,6 +44,13 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateUser(@PathVariable Long id, @RequestBody UserDto userDto){
+        userService.updateUser(userDto,id);
     }
     
 }
