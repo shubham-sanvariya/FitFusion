@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.CN.FitFusion.dto.UserDto;
+import com.CN.FitFusion.model.Diet;
 import com.CN.FitFusion.model.Exercise;
 import com.CN.FitFusion.model.User;
 import com.CN.FitFusion.service.UserService;
@@ -62,10 +63,17 @@ public class UserController {
         userService.deleteUserById(id);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/exercise/{id}")
     @PreAuthorize("hasRole('CUSTOMER')")
     @ResponseStatus(HttpStatus.OK)
     public List<Exercise> getExercisesByUserId(@PathVariable Long id) {
         return userService.getExercisesById(id);
+    }
+
+    @GetMapping("/diet/{id}")
+    @PreAuthorize("hasRole('CUSTOMER')")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Diet> getDietsByUserId(@PathVariable Long id) {
+        return userService.getDietsById(id);
     }
 }
