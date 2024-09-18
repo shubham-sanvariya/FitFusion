@@ -42,7 +42,7 @@ public class ExerciseController {
 
     @PostMapping("/create/{userId}")
     @PreAuthorize("hasRole('TRAINER')")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public void createExerciseForUser(@RequestBody ExerciseDto exerciseDto, @PathVariable Long userId){
         exerciseService.addExerciseForUser(exerciseDto,userId);
     }
