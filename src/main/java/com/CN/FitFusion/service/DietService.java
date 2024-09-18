@@ -55,4 +55,8 @@ public class DietService {
 
         dietRepository.save(diet);
     }
+
+    public void deleteDietById(Long id){
+        dietRepository.deleteById(id);
+    }
 }
