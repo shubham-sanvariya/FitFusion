@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -45,5 +46,12 @@ public class DietController {
     @ResponseStatus(HttpStatus.CREATED)
     public void createDietForUser(@RequestBody DietDto dietDto, @PathVariable Long userId){
         dietService.addDietForUser(dietDto,userId);
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('TRAINER')")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateDiet(@RequestBody DietDto dietDto, @PathVariable Long id){
+        dietService.updateDiet(dietDto,id);
     }
 }
