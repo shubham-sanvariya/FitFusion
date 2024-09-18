@@ -55,4 +55,8 @@ public class ExerciseService {
 
         exerciseRepository.save(exercise);
     }
+
+    public void deleteExercise(Long id){
+        exerciseRepository.deleteById(id);
+    }
 }
