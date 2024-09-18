@@ -40,7 +40,10 @@ public class ExerciseService {
                             .sets(exerciseDto.getSets())
                             .reps(exerciseDto.getReps())
                             .build();
+
         user.getExerciseList().add(exercise);
+        exercise.setUser(user);
+        
         exerciseRepository.save(exercise);
         userRepository.save(user);
     }
