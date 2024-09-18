@@ -26,7 +26,7 @@ public class ExerciseService {
         return exerciseRepository.findAll();
     }
 
-    public Exercise getExercisesById(Long id){
+    public Exercise getExerciseById(Long id){
         return exerciseRepository.findById(id)
             .orElseThrow(() -> new ExerciseNotFoundException("exercise not found"));
     }
@@ -49,7 +49,7 @@ public class ExerciseService {
     }
 
     public void updateExercise(ExerciseDto exerciseDto, Long id){
-        Exercise exercise = getExercisesById(id);
+        Exercise exercise = getExerciseById(id);
 
         exercise.setName(exerciseDto.getName());
         exercise.setDescription(exerciseDto.getDescription());

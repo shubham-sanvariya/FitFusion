@@ -37,7 +37,7 @@ public class ExerciseController {
     @PreAuthorize("hasRole('TRAINER')")
     @ResponseStatus(HttpStatus.OK)
     public Exercise getExerciseById(@PathVariable Long id){
-        return exerciseService.getExercisesById(id);
+        return exerciseService.getExerciseById(id);
     }
 
     @PostMapping("/create/{userId}")
