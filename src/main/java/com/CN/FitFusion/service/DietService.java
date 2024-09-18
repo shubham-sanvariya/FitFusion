@@ -46,4 +46,13 @@ public class DietService {
         dietRepository.save(diet);
         userRepository.save(user);
     }
+
+    public void updateDiet(DietDto dietDto, Long id){
+        Diet diet = getDietById(id);
+
+        diet.setName(dietDto.getName());
+        diet.setDescription(dietDto.getDescription());
+
+        dietRepository.save(diet);
+    }
 }
