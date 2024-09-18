@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.CN.FitFusion.dto.UserDto;
+import com.CN.FitFusion.model.Exercise;
 import com.CN.FitFusion.model.User;
 import com.CN.FitFusion.service.UserService;
 
@@ -60,5 +61,11 @@ public class UserController {
     public void deleteUserById(@PathVariable Long id){
         userService.deleteUserById(id);
     }
-    
+
+    @GetMapping("/{id}")
+    @PreAuthorize("hasRole('CUSTOMER')")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Exercise> getExercisesByUserId(@PathVariable Long id) {
+        return userService.getExercisesById(id);
+    }
 }
