@@ -44,4 +44,15 @@ public class ExerciseService {
         exerciseRepository.save(exercise);
         userRepository.save(user);
     }
+
+    public void updateExercise(ExerciseDto exerciseDto, Long id){
+        Exercise exercise = getExercisesById(id);
+
+        exercise.setName(exerciseDto.getName());
+        exercise.setDescription(exerciseDto.getDescription());
+        exercise.setSets(exerciseDto.getSets());
+        exercise.setReps(exerciseDto.getReps());
+
+        exerciseRepository.save(exercise);
+    }
 }
